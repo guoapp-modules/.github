@@ -46,6 +46,8 @@ def manifest_problems(manifest: dict, repo: str | None, tag: str | None) -> list
         errors.append("runtime 须为 js")
     if manifest.get("api") != API_VERSION:
         errors.append(f"api 须为 {API_VERSION}")
+    if not isinstance(manifest.get("adult"), bool):
+        errors.append("adult 须为 true 或 false")
     for field in ("hosts", "aliases", "hostSuffixes", "mediaAuthPaths"):
         if field in manifest and not string_list(manifest[field]):
             errors.append(f"{field} 须为字符串数组")
