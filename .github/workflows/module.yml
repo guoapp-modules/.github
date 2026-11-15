@@ -1,0 +1,29 @@
+name: 模块
+
+on:
+  workflow_call:
+
+jobs:
+  module:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: guoapp-modules/.github
+          path: .module-ci
+      - name: 校验
+        env:
+          REPO: ${{ github.event.repository.name }}
+          TAG: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
+        run: python3 .module-ci/scripts/check_module.py . --repo "$REPO" ${TAG:+--tag "$TAG"}
+      - name: 发布
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          package="$(jq -r .id manifest.json)-$(jq -r .version manifest.json).zip"
+          zip -X -j "$package" manifest.json main.js
+          gh release create "$GITHUB_REF_NAME" "$package" --title "$GITHUB_REF_NAME" --generate-notes
