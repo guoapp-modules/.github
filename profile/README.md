@@ -1,6 +1,6 @@
 # guoapp-modules
 
-[guoapp](https://github.com/Xanerix/guoapp) 的站源模块。每个仓库是一个模块，在应用的 我的 › 模块 里安装。
+[guoapp](https://github.com/Xanerix/guoapp) 的站源模块。每个仓库是一个模块，在应用的 我的 › 模块 里安装。组织内所有仓库以 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html) 许可发布。
 
 - [template](https://github.com/guoapp-modules/template)：模块模板，写新模块从这里开始。
 - [index](https://github.com/guoapp-modules/index)：应用内模块商店读取的索引，以及上架与撤下的规则。

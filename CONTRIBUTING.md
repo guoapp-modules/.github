@@ -2,6 +2,8 @@
 
 guoapp-modules 里每个仓库是 [guoapp](https://github.com/Xanerix/guoapp) 的一个站源模块。清单字段、导出函数和宿主接口见 guoapp 开发指南的[「站源模块」](https://github.com/Xanerix/guoapp/blob/main/DEVELOPMENT.md#站源模块)。
 
+组织内所有仓库以 GPL-3.0 许可发布，提交的代码同样按 GPL-3.0 授权。
+
 ## 改进已有模块
 
 fork 对应的模块仓库，改好后提 PR。CI 会校验清单格式、`main.js` 语法，并拒绝压缩或混淆过的代码（单行不超过 1000 个字符）。
